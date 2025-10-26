@@ -1,28 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lying Chatbot</title>
     <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-        <div id="sidebar">Sidebar</div>
-
-        <div id="main-chat">
-            <div id="chat-container">ciao
-                <br>come <br>stai
-            </div>
-
-            <div id="user-input-container">
-                <input id="user-input-field" placeholder="Ask me something..." />
-                <button id="send-message-btn">Send</button>
-            </div>
+    <aside class="sidebar_container closed">
+        <div class="sidebar_header">
+            <img src="icons/chatgpt_logo.svg" alt="logo" class="header_logo">
+            <button class="header_close">
+                <img src="icons/close.svg" alt="close">
+            </button>
         </div>
 
+        <ul class="sidebar_list">
+            <li class="sidebar_list_item">
+                <img src="icons/new_chat.svg" alt="New Chat">
+                <span>New chat</span>
+            </li>
+        </ul>
+    </aside>
+
+    <main class="chat_container">
+
+        <div class="chat_header">
+            <img src="icons/hamburger.svg" alt="hamburger" class="chat_hamburger">
+        </div>
+
+        <div class="chat_body">
+            <p class="body_placeholder">Ready when you are.</p>
+        </div>
+
+        <div class="chat_footer">
+            <form class="footer_form">
+                <input type="text" class="footer_input" placeholder="Ask anything">
+                <button type="submit" class="footer_send">
+                    <img src="icons/send.svg" alt="send" class="footer_send_icon">
+                </button>
+            </form>
+        </div>
+    </main>
 </body>
 
 </html>

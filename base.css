@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+    --ff: "Roboto", sans-serif;
+    --fs: 1rem;
+
+    --chat-bg-color: #ffffff;
+    --sidebar-bg-color: #f9f9f9;
+    --sidebar-border-color: #0d0d0d0d;
+    --chat-border-color: rgba(13, 13, 13, 0.25);
+    --box-shadow-color: rgba(13, 13, 13, 0.125);
+
+    --padding-block: 0.5rem;
+    --padding-inline: 0.5rem;
+}
