@@ -3,7 +3,7 @@ body {
     position: relative;
 }
 
-/* #region Sidebar  */
+/* #region Sidebar */
 .sidebar_container {
     background-color: var(--sidebar-bg-color);
     border-right: 1px solid var(--sidebar-border-color);
@@ -11,7 +11,7 @@ body {
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 260px;
+    width: var(--sidebar-width);
     z-index: 1;
     transition: transform 0.3s ease-in-out;
 }
@@ -44,7 +44,15 @@ body {
 
 .header_logo,
 .header_sidebar {
-    margin: 8px;
+    margin: var(--padding-block);
+}
+
+.header_sidebar_icon {
+    display: none;
+}
+
+.header_close_icon {
+    display: block;
 }
 
 .sidebar_list {
@@ -128,3 +136,34 @@ body {
     padding: 0.15rem;
 }
 /* #endregion Footer */
+
+@media screen and (min-width: 768px) {
+    body {
+        display: flex;
+    }
+
+    /* #region Sidebar */
+    .sidebar_container {
+        position: static;
+        min-width: var(--sidebar-width);
+    }
+    /* #endregion Sidebar */
+
+    /* #region Chat */
+    .chat_container {
+        width: 100%
+    }
+
+    .chat_hamburger {
+        display: none;
+    }
+
+    .header_sidebar_icon {
+    display: block; 
+    }
+
+    .header_close_icon {
+        display: none;
+    }
+    /* #endregion Chat */
+}
