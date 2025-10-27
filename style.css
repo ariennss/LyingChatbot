@@ -3,7 +3,7 @@ body {
     position: relative;
 }
 
-/* #region Sidebar */
+/* #region Sidebar  */
 .sidebar_container {
     background-color: var(--sidebar-bg-color);
     border-right: 1px solid var(--sidebar-border-color);
