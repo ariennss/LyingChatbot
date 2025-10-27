@@ -151,7 +151,7 @@ body {
 
     /* #region Chat */
     .chat_container {
-        width: 100%
+        width: 100%;
     }
 
     .chat_hamburger {
@@ -159,7 +159,7 @@ body {
     }
 
     .header_sidebar_icon {
-    display: block; 
+        display: block;
     }
 
     .header_close_icon {
