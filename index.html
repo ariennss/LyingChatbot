@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="reset.css" />
         <link rel="stylesheet" href="base.css" />
         <link rel="stylesheet" href="style.css" />
+        <script src="JS/script.js" defer></script>
     </head>
 
     <body>
@@ -48,18 +49,20 @@
                 />
             </div>
 
-            <div class="chat_body">
-                <p class="body_placeholder">Ready when you are.</p>
+            <div class="chat_body" id="chat_body">
+                <p class="body_placeholder" id="chatPlaceholder">Ready when you are.</p>
             </div>
 
             <div class="chat_footer">
-                <form class="footer_form">
+                <form class="footer_form" id="form">
                     <input
                         type="text"
+                        id="user_input"
                         class="footer_input"
                         placeholder="Ask anything"
+                        name="userinput"
                     />
-                    <button type="submit" class="footer_send">
+                    <button type="submit" class="footer_send" id="sendMessageBtn">
                         <img
                             src="icons/send.svg"
                             alt="send"
