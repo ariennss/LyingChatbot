@@ -23,11 +23,13 @@ form.addEventListener("submit", (event) =>{
 // main function
 async function handleMessage(userInput) {
     console.log(userInput);
-    addMessageToQueue(userInput, true);
-    showMessages(userInput);
+    let messageObject = buildMessageObject(userInput, true);
+    addMessageToQueue(messageObject);
+    showMessages(messageObject);
     let response = await getResponseFromHuggingFace(userInput);
-    addMessageToQueue(response, false);
-    showMessages(response);
+    let responseObject = buildMessageObject(response, false);
+    addMessageToQueue(responseObject);
+    showMessages(responseObject);
     console.log("Response: " + response);
 }
 
@@ -56,20 +58,31 @@ async function getResponseFromHuggingFace(userQuestion){
     return json.answer;
 }
 
-// push messages in the queue
-function addMessageToQueue(message, isFromUser){
-    messageQueue.push({
+function buildMessageObject(message, isFromUser){
+    return {
         "message": message,
-        "isFromUser": isFromUser ? "user" : "chatbot"
-    });
+        "isFromUser": isFromUser ? true : false
+    }
+}
+
+// push messages in the queue
+function addMessageToQueue(messageObject){
+    messageQueue.push(messageObject);
 }
 
 // show messages at frontend
-function showMessages(message){
+function showMessages(messageObject){
    
         const p = document.createElement("p");
+        addStyle(messageObject, p);
         chatBody.appendChild(p);
-        p.innerText = message;
+        p.innerText = messageObject.message;
     ;
+}
+
+function addStyle(messageObject, messageParagraph){
+    let pClass = messageObject.isFromUser ? "user_messages" : "bot_messages";
+    messageParagraph.classList.add(pClass);
+    messageParagraph.classList.add("message");
 }
 
