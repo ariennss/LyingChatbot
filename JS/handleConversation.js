@@ -1,21 +1,20 @@
+// this is a list of message objects.
+// message objects include the message text and its origin (sender/bot)
+const messageQueue = [];
+
+
 // main function
 async function handleConversation(userInput) {
     inputBar.value = "";
-    handleUserMessage(userInput);
+    handleMessage(userInput, true);
     let response = await getResponseFromHuggingFace(userInput);
-    handleBotMessage(response);
+    handleMessage(response, false);
 }
 
-function handleUserMessage(messageFromUser){
-    let messageObject = buildMessageObject(messageFromUser, true);
+function handleMessage(messageFromUser, isFromUser){
+    let messageObject = buildMessageObject(messageFromUser, isFromUser);
     addMessageToQueue(messageObject);
     showMessages(messageObject);
-}
-
-function handleBotMessage(messageFromBot){
-    let responseObject = buildMessageObject(messageFromBot, false);
-    addMessageToQueue(responseObject);
-    showMessages(responseObject);
 }
 
 // call backend

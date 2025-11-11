@@ -9,7 +9,6 @@ const chatPlaceholder = document.getElementById("chatPlaceholder");
 const inputBar = document.getElementById("user_input");
 
 // LOGIC
-let messageQueue = [];
 
 form.addEventListener("submit", (event) =>{
     event.preventDefault();
