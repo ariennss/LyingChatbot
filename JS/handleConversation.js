@@ -1,6 +1,6 @@
 // this is a list of message objects.
 // message objects include the message text and its origin (sender/bot)
-const messageQueue = [];
+let messageQueue = [];
 
 
 // main function
