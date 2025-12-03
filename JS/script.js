@@ -34,20 +34,52 @@ form.addEventListener("submit", (event) =>{
 newChatButton.addEventListener("click", newChat);
 
 function newChat(){
+    // old chat
     let guid = crypto.randomUUID();
     chats.find(x => x.chatid === currentChatId).chatContent = [...messageQueue];
     messageQueue = [];
+    addNewChatToSidebar(currentChatId);
+
+    // new chat
     currentChatId = guid;
     chats.push({
         chatid: guid,
         chatContent: messageQueue
     });
-    addNewChatToSidebar(guid);
+
+    clearChatBody();
 }
 
 function addNewChatToSidebar(guid){
     let liElement = document.createElement("li");
     liElement.id = guid;
-    liElement.innerText = "Chat id: " + guid;
+    liElement.classList.add("chatListElement");
+    const firstMessage = chats.find(x => x.chatid == guid).chatContent[0].message;
+    liElement.innerText = firstMessage;
+    liElement.addEventListener("click", (e) => switchToChat(e) );
     sidebarList.appendChild(liElement);
 }
+
+function clearChatBody(){
+    while (chatBody.firstChild){
+        chatBody.removeChild(chatBody.firstChild);
+    }
+}
+
+function switchToChat(event){
+    console.log(event);
+    const id = event.target.id;
+    currentChatId = id;
+    console.log(id);
+
+    const chatToSwitchTo = chats.find(chat => chat.chatid == id);
+    console.log(chatToSwitchTo);
+    const chatToSwitchToMessages = chatToSwitchTo.chatContent;
+    console.log(chatToSwitchToMessages);
+    messageQueue = chatToSwitchToMessages;
+    console.log(messageQueue);
+    clearChatBody();
+    messageQueue.forEach(x => showMessages(x));
+
+}
+

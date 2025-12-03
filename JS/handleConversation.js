@@ -5,6 +5,11 @@ let messageQueue = [];
 
 // main function
 async function handleConversation(userInput) {
+    let currentChat = chats.find(chat => chat.chatid == currentChatId);
+    if (currentChat.chatContent.length == 0){
+        
+    }
+
     inputBar.value = "";
     handleMessage(userInput, true);
     let response = await getResponseFromHuggingFace(userInput);
