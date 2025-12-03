@@ -29,18 +29,23 @@ form.addEventListener("submit", (event) =>{
     console.log("User input: " + questionFromUser);
     chatPlaceholder.style.display = "none";
     handleConversation(questionFromUser);
+
+    if (chats.find(x => x.chatid === currentChatId).chatContent.length == 2){
+        chats.find(x => x.chatid === currentChatId).chatContent = [...messageQueue];
+        addNewChatToSidebar(currentChatId);
+    }
 });
 
 newChatButton.addEventListener("click", newChat);
 
 function newChat(){
     // old chat
-    let guid = crypto.randomUUID();
-    chats.find(x => x.chatid === currentChatId).chatContent = [...messageQueue];
-    messageQueue = [];
-    addNewChatToSidebar(currentChatId);
+     chats.find(x => x.chatid === currentChatId).chatContent = [...messageQueue];
+     messageQueue = [];
+    // addNewChatToSidebar(currentChatId);
 
     // new chat
+    let guid = crypto.randomUUID();
     currentChatId = guid;
     chats.push({
         chatid: guid,
