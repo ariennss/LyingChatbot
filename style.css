@@ -30,6 +30,12 @@ body {
     align-items: center;
 }
 
+#hamburger_menu_button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
 .header_logo {
     --size: 24px;
     width: var(--size);

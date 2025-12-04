@@ -9,6 +9,9 @@ const chatPlaceholder = document.getElementById("chatPlaceholder");
 const inputBar = document.getElementById("user_input");
 const sidebarList = document.getElementById("sidebar_list");
 const newChatButton = document.getElementById("newChatBtn");
+const headerOpenCloseButton = document.getElementById("header_close_button");
+const hamburgerMenuButton = document.getElementById("hamburger_menu_button");
+const sidebar = document.getElementById("sidebar");
 
 // LOGIC
 const chats = [
@@ -21,22 +24,38 @@ console.log(chats);
 let currentChatId = chats[0].chatid;
 console.log(currentChatId);
 
-form.addEventListener("submit", (event) =>{
+form.addEventListener("submit", (event) => onSubmitMessage(event));
+headerOpenCloseButton.addEventListener("click", changeSidebarVisibility);
+newChatButton.addEventListener("click", newChat);
+hamburgerMenuButton.addEventListener("click", changeSidebarVisibility);
+
+async function onSubmitMessage(event){
     event.preventDefault();
     const submitTarget = event.target;
     const formData = new FormData(submitTarget);
     const questionFromUser = formData.get("userinput");
     console.log("User input: " + questionFromUser);
     chatPlaceholder.style.display = "none";
-    handleConversation(questionFromUser);
+    await handleConversation(questionFromUser);
 
     if (chats.find(x => x.chatid === currentChatId).chatContent.length == 2){
         chats.find(x => x.chatid === currentChatId).chatContent = [...messageQueue];
         addNewChatToSidebar(currentChatId);
     }
-});
+}
 
-newChatButton.addEventListener("click", newChat);
+function changeSidebarVisibility(){
+    if (sidebar.classList.contains("closed"))
+    {
+        sidebar.classList.remove("closed");
+        sidebar.classList.add("open");
+    }
+    else
+    {
+        sidebar.classList.remove("open");
+        sidebar.classList.add("closed");
+    }
+}
 
 function newChat(){
     // old chat

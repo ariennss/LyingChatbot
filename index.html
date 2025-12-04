@@ -12,14 +12,14 @@
     </head>
 
     <body>
-        <aside class="sidebar_container open">
+        <aside class="sidebar_container open" id="sidebar">
             <div class="sidebar_header">
                 <img
                     src="icons/chatgpt_logo.svg"
                     alt="logo"
                     class="header_logo"
                 />
-                <button class="header_close">
+                <button class="header_close" id="header_close_button">
                     <img
                         src="icons/close.svg"
                         alt="close"
@@ -43,11 +43,13 @@
 
         <main class="chat_container">
             <div class="chat_header">
+                <button id="hamburger_menu_button">
                 <img
                     src="icons/hamburger.svg"
                     alt="hamburger"
                     class="chat_hamburger"
                 />
+                </button>
             </div>
 
             <div class="chat_body" id="chat_body">
